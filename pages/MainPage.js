@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import BottomBar from '../components/BottomBar'
 
 export default function App() {
   return (
@@ -7,6 +8,7 @@ export default function App() {
       <Text style={styles.header}>Workout Pal</Text>
       <Text style={styles.todaysWorkout}>Today's Workout: Back Day</Text>
       <View style={styles.rectangle} />
+      <BottomBar />
     </View>
   );
 }
@@ -29,14 +31,13 @@ const styles = StyleSheet.create({
   },
   todaysWorkout: {
     color: '#f0d4d4',
-    paddingTop: '5%',
     paddingHorizontal: '5%',
     fontSize: 30,
+    paddingBottom: '15%',
     textAlign: "center",
   },
   rectangle: {
-    // color: '#838383'
-    color: 'green',
+    backgroundColor: '#838383',
     width: '80%',
     height: '10%',
   }

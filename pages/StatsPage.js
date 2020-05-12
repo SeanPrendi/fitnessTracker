@@ -6,7 +6,7 @@ export default function StatsPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Workout Stats</Text>
-      <BottomBar setPage={props.setPage} />
+      <BottomBar setPage={props.setPage} currPage="stats" />
     </View>
   );
 }

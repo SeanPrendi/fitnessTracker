@@ -11,12 +11,18 @@ import person from "../assets/Person.png";
 import calendar from "../assets/Calendar.png";
 
 const Button = props => {
+  const here = props.currPage === props.id;
   return (
     <View style={styles.ButtonContainer}>
       <TouchableHighlight
         underlayColor="#666666"
-        style={styles.BottomButton}
-        onPress={() => props.setPage()}
+        style={[
+          styles.BottomButton,
+          {
+            backgroundColor: here ? "#666666" : "#444444"
+          }
+        ]}
+        onPress={() => here ? props.setPage("main") : props.setPage(props.id)}
       >
         <Image source={props.img} style={styles.ButtonImg} />
       </TouchableHighlight>
@@ -27,9 +33,24 @@ const Button = props => {
 export default function BottomBar(props) {
   return (
     <View style={styles.BottomBarContainer}>
-      <Button img={calendar} setPage={() => props.setPage("calendar")} />
-      <Button img={person } setPage={() => props.setPage("settings")} />
-      <Button img={chart} setPage={() => props.setPage("stats")} />
+      <Button
+        img={calendar}
+        id="calendar"
+        setPage={props.setPage}
+        currPage={props.currPage}
+      />
+      <Button
+        img={person}
+        id="settings"
+        setPage={props.setPage}
+        currPage={props.currPage}
+      />
+      <Button
+        img={chart}
+        id="stats"
+        setPage={props.setPage}
+        currPage={props.currPage}
+      />
     </View>
   );
 }

@@ -6,7 +6,7 @@ export default function SettingsPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>User Settings</Text>
-      <BottomBar setPage={props.setPage} />
+      <BottomBar setPage={props.setPage} currPage="settings" />
     </View>
   );
 }

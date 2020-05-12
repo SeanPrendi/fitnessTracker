@@ -6,7 +6,7 @@ export default function CalendarPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Current Schedule</Text>
-      <BottomBar setPage={props.setPage} />
+      <BottomBar setPage={props.setPage} currPage="calendar" />
     </View>
   );
 }

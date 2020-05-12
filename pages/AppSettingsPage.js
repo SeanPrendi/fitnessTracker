@@ -2,11 +2,11 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import BottomBar from "../components/BottomBar";
 
-export default function SettingsPage(props) {
+export default function AppSettingsPage(props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>User Settings</Text>
-      <BottomBar setPage={props.setPage} currPage="settings" />
+      <Text style={styles.header}>App Settings</Text>
+      <BottomBar setPage={props.setPage} currPage="appSettings" />
     </View>
   );
 }

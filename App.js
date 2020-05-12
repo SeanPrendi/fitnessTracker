@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import MainPage from "./pages/MainPage";
 import CalendarPage from "./pages/CalendarPage";
-import SettingsPage from "./pages/SettingsPage";
+import UserSettingsPage from "./pages/UserSettingsPage";
+import AppSettingsPage from "./pages/AppSettingsPage";
 import StatsPage from "./pages/StatsPage";
 
 export default function App() {
@@ -12,24 +13,13 @@ export default function App() {
       return <MainPage setPage={setPage} />;
     case "calendar":
       return <CalendarPage setPage={setPage} />;
-    case "settings":
-      return <SettingsPage setPage={setPage} />;
+    case "userSettings":
+      return <UserSettingsPage setPage={setPage} />;
     case "stats":
       return <StatsPage setPage={setPage} />;
+    case "appSettings":
+      return <AppSettingsPage setPage={setPage} />;
     default:
       return <MainPage setPage={setPage} />;
   }
-
-  // if (page === "main") {
-  //   return <MainPage setPage={setPage} />;
-  // } else if (page === "calendar") {
-  //   return <CalendarPage setPage={setPage} />;
-  // } else if (page === "settings") {
-  //   return <SettingsPage setPage={setPage} />;
-  // } else if (page === "stats") {
-  //   return <StatsPage setPage={setPage} />;
-  // } else {
-  //   console.log(page);
-  //   return <MainPage setPage={setPage} />;
-  // }
 }

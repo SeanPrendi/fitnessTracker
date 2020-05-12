@@ -6,7 +6,9 @@ import {
   Dimensions,
   Image
 } from "react-native";
+import settings from "../assets/Settings.png";
 import chart from "../assets/Chart.png";
+import home from "../assets/Home.png";
 import person from "../assets/Person.png";
 import calendar from "../assets/Calendar.png";
 
@@ -22,7 +24,7 @@ const Button = props => {
             backgroundColor: here ? "#666666" : "#444444"
           }
         ]}
-        onPress={() => here ? props.setPage("main") : props.setPage(props.id)}
+        onPress={() => (props.setPage(props.id))}
       >
         <Image source={props.img} style={styles.ButtonImg} />
       </TouchableHighlight>
@@ -34,14 +36,26 @@ export default function BottomBar(props) {
   return (
     <View style={styles.BottomBarContainer}>
       <Button
+        img={settings}
+        id="appSettings"
+        setPage={props.setPage}
+        currPage={props.currPage}
+      />
+      <Button
         img={calendar}
         id="calendar"
         setPage={props.setPage}
         currPage={props.currPage}
       />
       <Button
+        img={home}
+        id="main"
+        setPage={props.setPage}
+        currPage={props.currPage}
+      />
+      <Button
         img={person}
-        id="settings"
+        id="userSettings"
         setPage={props.setPage}
         currPage={props.currPage}
       />
@@ -64,14 +78,15 @@ const styles = StyleSheet.create({
   },
   BottomButton: {
     backgroundColor: "#444444",
-    width: Dimensions.get("window").width / 3,
-    height: Dimensions.get("window").width / 4
+    width: Dimensions.get("window").width / 5,
+    height: Dimensions.get("window").width / 5,
+    paddingBottom: 20
   },
   ButtonImg: {
     resizeMode: "cover",
-    flex: 1,
+    flex: 2,
     alignSelf: "center",
     width: "70%",
-    height: undefined
+    height: "50%"
   }
 });

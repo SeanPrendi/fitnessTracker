@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import BottomBar from '../components/BottomBar'
 
-export default function App() {
+export default function MainPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Workout Pal</Text>
       <Text style={styles.todaysWorkout}>Today's Workout: Back Day</Text>
       <View style={styles.rectangle} />
-      <BottomBar />
+      <BottomBar setPage={props.setPage} />
     </View>
   );
 }

@@ -7,13 +7,9 @@ export default function MainPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Workout Pal</Text>
-      <Text style={styles.todaysWorkout}>Today's Workout: Back Day</Text>
-      <ExerciseBar
-        exercise="Deadlift"
-        weight={235}
-        unit="lbs"
-        sets={8}
-      />
+      <Text style={styles.todaysWorkout}>Today's Workout: Leg Day</Text>
+      <ExerciseBar exercise="Deadlift" weight={325} unit="lbs" sets={5} />
+      <ExerciseBar exercise="Squat" weight={235} unit="lbs" sets={5} />
       <BottomBar setPage={props.setPage} currPage={"main"} />
     </View>
   );

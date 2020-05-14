@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  KeyboardAvoidingView
+} from "react-native";
 import BottomBar from "../components/BottomBar";
 import ExerciseBar from "../components/ExerciseBar";
 import data from "../mockdata/exercise";
@@ -11,25 +18,32 @@ export default function MainPage(props) {
     <View style={styles.container}>
       <Text style={styles.header}>Workout Pal</Text>
       <Text style={styles.todaysWorkout}>Today's Workout: {props.day} Day</Text>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={styles.scrollingExternContainer}
-        contentContainerStyle={styles.scrollingContenterContainer}
-        bounces={false}
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={{flex: 1}}
+        keyboardVerticalOffset={40}
       >
-        {exercises.map((ex, idx) => {
-          return (
-            <View style={styles.EBarContainer} key={idx}>
-              <ExerciseBar
-                exercise={ex.exercise}
-                weight={ex.weight}
-                unit={unit}
-                sets={ex.sets}
-              />
-            </View>
-          );
-        })}
-      </ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.scrollingExternContainer}
+          contentContainerStyle={styles.scrollingContenterContainer}
+          bounces={false}
+        >
+          {exercises.map((ex, idx) => {
+            return (
+              <View style={styles.EBarContainer} key={idx}>
+                <ExerciseBar
+                  exercise={ex.exercise}
+                  weight={ex.weight}
+                  unit={unit}
+                  sets={ex.sets}
+                  reps={ex.reps}
+                />
+              </View>
+            );
+          })}
+        </ScrollView>
+      </KeyboardAvoidingView>
       <View style={styles.BottomBarContainer}>
         <BottomBar setPage={props.setPage} currPage={"main"} />
       </View>
@@ -45,6 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#181818",
     alignItems: "center",
     justifyContent: "flex-start",
+    height: Dimensions.get("window").height
   },
   header: {
     color: "#f0d4d4",
@@ -61,10 +76,10 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   scrollingExternContainer: {
-    width: Dimensions.get("window").width
+    width: Dimensions.get("window").width,
   },
   scrollingContenterContainer: {
-    alignItems: "center"
+    alignItems: "center",
   },
   EBarContainer: {
     flex: 1,
@@ -72,6 +87,6 @@ const styles = StyleSheet.create({
     paddingBottom: Dimensions.get("window").width * 0.05
   },
   BottomBarContainer: {
-    alignSelf: "flex-end"
+    // alignSelf: "flex-end"
   }
 });

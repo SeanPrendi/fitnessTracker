@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   Dimensions,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Platform
 } from "react-native";
 import BottomBar from "../components/BottomBar";
 import ExerciseBar from "../components/ExerciseBar";

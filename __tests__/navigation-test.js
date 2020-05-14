@@ -36,7 +36,7 @@ describe("Main navigation", () => {
 
   it("Should render main page", () => {
     const setPage = jest.fn;
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Text")
@@ -47,7 +47,7 @@ describe("Main navigation", () => {
 
   it("Should switch to app settings on button press", () => {
     const setPage = jest.fn();
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Button")
@@ -63,7 +63,7 @@ describe("Main navigation", () => {
 
   it("Should switch to calendar on button press", () => {
     const setPage = jest.fn();
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Button")
@@ -79,7 +79,7 @@ describe("Main navigation", () => {
 
   it("Should switch to main on button press", () => {
     const setPage = jest.fn();
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Button")
@@ -95,7 +95,7 @@ describe("Main navigation", () => {
 
   it("Should switch to user settings on button press", () => {
     const setPage = jest.fn();
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Button")
@@ -111,7 +111,7 @@ describe("Main navigation", () => {
 
   it("Should switch to stats on button press", () => {
     const setPage = jest.fn();
-    const wrapper = mount(<Main setPage={setPage} />);
+    const wrapper = mount(<Main setPage={setPage}  day={"Back"}/>);
     expect(
       wrapper
         .find("Button")

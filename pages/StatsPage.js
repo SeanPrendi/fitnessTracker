@@ -1,12 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import BottomBar from "../components/BottomBar";
 
 export default function StatsPage(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Workout Stats</Text>
-      <BottomBar setPage={props.setPage} currPage="stats" />
+      <ScrollView />
+      <View style={styles.BottomBarContainer}>
+        <BottomBar setPage={props.setPage} currPage={"stats"} />
+      </View>
     </View>
   );
 }
@@ -26,5 +29,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: "5%",
     fontSize: 50,
     textAlign: "center"
+  },
+  BottomBarContainer: {
+    alignSelf: "flex-end"
   }
 });

@@ -73,8 +73,6 @@ const styles = StyleSheet.create({
   BottomBarContainer: {
     display: "flex",
     flexDirection: "row",
-    position: "absolute",
-    bottom: 0
   },
   BottomButton: {
     backgroundColor: "#444444",

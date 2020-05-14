@@ -1,16 +1,53 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform
+} from "react-native";
 import BottomBar from "../components/BottomBar";
 import ExerciseBar from "../components/ExerciseBar";
+import data from "../mockdata/exercise";
 
 export default function MainPage(props) {
+  const unit = data.unit;
+  let exercises = data[props.day];
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Workout Pal</Text>
-      <Text style={styles.todaysWorkout}>Today's Workout: Leg Day</Text>
-      <ExerciseBar exercise="Deadlift" weight={325} unit="lbs" sets={5} />
-      <ExerciseBar exercise="Squat" weight={235} unit="lbs" sets={5} />
-      <BottomBar setPage={props.setPage} currPage={"main"} />
+      <Text style={styles.todaysWorkout}>Today's Workout: {props.day} Day</Text>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        style={{flex: 1}}
+        keyboardVerticalOffset={40}
+      >
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.scrollingExternContainer}
+          contentContainerStyle={styles.scrollingContenterContainer}
+          bounces={false}
+        >
+          {exercises.map((ex, idx) => {
+            return (
+              <View style={styles.EBarContainer} key={idx}>
+                <ExerciseBar
+                  exercise={ex.exercise}
+                  weight={ex.weight}
+                  unit={unit}
+                  sets={ex.sets}
+                  reps={ex.reps}
+                />
+              </View>
+            );
+          })}
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <View style={styles.BottomBarContainer}>
+        <BottomBar setPage={props.setPage} currPage={"main"} />
+      </View>
     </View>
   );
 }
@@ -22,7 +59,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#181818",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    height: Dimensions.get("window").height
   },
   header: {
     color: "#f0d4d4",
@@ -35,12 +73,21 @@ const styles = StyleSheet.create({
     color: "#f0d4d4",
     paddingHorizontal: "5%",
     fontSize: 30,
-    paddingBottom: "15%",
+    paddingBottom: "8%",
     textAlign: "center"
   },
-  rectangle: {
-    backgroundColor: "#838383",
-    width: "80%",
-    height: "10%"
+  scrollingExternContainer: {
+    width: Dimensions.get("window").width,
+  },
+  scrollingContenterContainer: {
+    alignItems: "center",
+  },
+  EBarContainer: {
+    flex: 1,
+    height: Dimensions.get("window").height * 0.11,
+    paddingBottom: Dimensions.get("window").width * 0.05
+  },
+  BottomBarContainer: {
+    // alignSelf: "flex-end"
   }
 });

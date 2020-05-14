@@ -7,19 +7,20 @@ import StatsPage from "./pages/StatsPage";
 
 export default function App() {
   const [page, setPage] = useState("main");
+  const [day, setDay] = useState("Back")
 
   switch (page) {
     case "main":
-      return <MainPage setPage={setPage} />;
+      return <MainPage setPage={setPage} day={day} />;
     case "calendar":
-      return <CalendarPage setPage={setPage} />;
+      return <CalendarPage setPage={setPage} day={day} />;
     case "userSettings":
-      return <UserSettingsPage setPage={setPage} />;
+      return <UserSettingsPage setPage={setPage} day={day} />;
     case "stats":
-      return <StatsPage setPage={setPage} />;
+      return <StatsPage setPage={setPage} day={day} />;
     case "appSettings":
-      return <AppSettingsPage setPage={setPage} />;
+      return <AppSettingsPage setPage={setPage} day={day} />;
     default:
-      return <MainPage setPage={setPage} />;
+      return <MainPage setPage={setPage} day={day} />;
   }
 }

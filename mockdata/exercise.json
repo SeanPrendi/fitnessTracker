@@ -1,0 +1,10 @@
+{
+  "unit": "lbs",
+  "Back": [
+    { "exercise": "deadlift", "weight": 325, "sets": 5, "reps": 8 },
+    { "exercise": "bent over row", "weight": 225, "sets": 5, "reps": 8 },
+    { "exercise": "pullups", "weight": 0, "sets": 5, "reps": 8 },
+    { "exercise": "dumbbell curls", "weight": 35, "sets": 3, "reps": 12 },
+    { "exercise": "facepulls", "weight": 45, "sets": 6, "reps": 10 }
+  ]
+}

@@ -13,8 +13,6 @@ Enzyme.configure({ adapter: new Adapter() });
 global.shallow = Enzyme.shallow;
 
 describe("All exercise bars present", () => {
-  
-
   // Set up state to avoid dumb enzyme errors
   const origError = console.error;
   const DISALLOWED_ERROR_TAGS = ["incorrect casing"];

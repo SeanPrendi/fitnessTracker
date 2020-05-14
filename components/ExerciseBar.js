@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     borderColor: "#838383",
     borderWidth: 3,
     width: "80%",
-    height: "10%"
+    // minHeight: "12%",
+    height: "100%"
   },
   ExerciseContainer: {
     display: "flex",

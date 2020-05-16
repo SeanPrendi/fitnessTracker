@@ -7,7 +7,8 @@ import StatsPage from "./pages/StatsPage";
 
 export default function App() {
   const [page, setPage] = useState("main");
-  const [day, setDay] = useState("Back")
+  const [day, setDay] = useState("Back");
+  setDay("Back"); // ! remove this; short term linting fix
 
   switch (page) {
     case "main":

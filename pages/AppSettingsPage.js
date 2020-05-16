@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import PropTypes from 'prop-types';
 import BottomBar from '../components/BottomBar';
 
 export default function AppSettingsPage(props) {
@@ -13,6 +14,10 @@ export default function AppSettingsPage(props) {
     </View>
   );
 }
+
+AppSettingsPage.propTypes = {
+  setPage: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {

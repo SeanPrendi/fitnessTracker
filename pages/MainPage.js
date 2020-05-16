@@ -8,9 +8,10 @@ import {
   KeyboardAvoidingView,
   Platform
 } from 'react-native';
+import PropTypes from 'prop-types';
 import BottomBar from '../components/BottomBar';
 import ExerciseBar from '../components/ExerciseBar';
-import data from '../mockdata/exercise';
+import data from '../mockdata/exercise.json';
 
 export default function MainPage(props) {
   const { unit } = data;
@@ -20,7 +21,7 @@ export default function MainPage(props) {
       <Text style={styles.header}>Workout Pal</Text>
       <Text style={styles.todaysWorkout}>Today's Workout: {props.day} Day</Text>
       <KeyboardAvoidingView
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={{ flex: 1 }}
         keyboardVerticalOffset={40}>
         <ScrollView
@@ -49,6 +50,11 @@ export default function MainPage(props) {
     </View>
   );
 }
+
+MainPage.propTypes = {
+  day: PropTypes.string.isRequired,
+  setPage: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {

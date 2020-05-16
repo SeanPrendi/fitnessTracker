@@ -9,6 +9,7 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 function RepBox(props) {
   const [reps, setReps] = useState(props.reps.toString());
@@ -20,7 +21,6 @@ function RepBox(props) {
     } else if (num.search(/\./) === -1) {
       setReps(num);
       setChanged(true);
-      // checkGood();
     }
   };
   const checkGood = () => {
@@ -33,11 +33,18 @@ function RepBox(props) {
       setGood(false);
     }
   };
+
+  const colorByGood = () => {
+    if (good) {
+      return 'green';
+    }
+    return 'red';
+  };
   return (
     <View
       style={[
         styles.RepBoxContainer,
-        { backgroundColor: changed ? (good ? 'green' : 'red') : 'transparent' }
+        { backgroundColor: changed ? colorByGood() : 'transparent' }
       ]}>
       <TextInput
         style={styles.InputText}
@@ -54,7 +61,7 @@ function RepBox(props) {
 
 function SetBar(props) {
   const repList = [];
-  for (let i = 0; i < props.sets; i++) {
+  for (let i = 0; i < props.sets; i += 1) {
     repList.push(props.reps);
   }
   return (
@@ -68,7 +75,7 @@ function SetBar(props) {
       <View style={styles.SetBoxContainer}>
         <TouchableWithoutFeedback onPress={props.close}>
           <View style={styles.CloseSetBoxButton}>
-            <Text style={styles.Text}>></Text>
+            <Text style={styles.Text}>&gt;</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>
@@ -148,6 +155,22 @@ export default function ExerciseBar(props) {
     </View>
   );
 }
+
+RepBox.propTypes = {
+  reps: PropTypes.number.isRequired
+};
+SetBar.propTypes = {
+  sets: PropTypes.number.isRequired,
+  reps: PropTypes.number.isRequired,
+  close: PropTypes.func.isRequired
+};
+ExerciseBar.propTypes = {
+  sets: PropTypes.number.isRequired,
+  reps: PropTypes.number.isRequired,
+  exercise: PropTypes.string.isRequired,
+  weight: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired
+};
 
 const styles = StyleSheet.create({
   ExerciseBarContainer: {

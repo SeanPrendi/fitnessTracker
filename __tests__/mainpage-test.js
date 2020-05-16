@@ -36,7 +36,7 @@ describe('All exercise bars present', () => {
   });
 
   it('Should render all exercises', () => {
-    const wrapper = shallow(<Main day="Back" />);
+    const wrapper = shallow(<Main day="Back" setPage={() => {}} />);
     expect(wrapper.find('ExerciseBar').length).toBe(data.Back.length);
   });
 });

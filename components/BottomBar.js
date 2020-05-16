@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableHighlight, Dimensions, Image } from 'react-native';
+import PropTypes from 'prop-types';
 import settings from '../assets/Settings.png';
 import chart from '../assets/Chart.png';
 import home from '../assets/Home.png';
@@ -36,6 +37,18 @@ export default function BottomBar(props) {
     </View>
   );
 }
+
+Button.propTypes = {
+  setPage: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  currPage: PropTypes.string.isRequired,
+  img: PropTypes.any.isRequired
+};
+
+BottomBar.propTypes = {
+  setPage: PropTypes.func.isRequired,
+  currPage: PropTypes.string.isRequired
+};
 
 const styles = StyleSheet.create({
   BottomBarContainer: {

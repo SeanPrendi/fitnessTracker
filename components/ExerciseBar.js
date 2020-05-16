@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,24 +8,24 @@ import {
   TextInput,
   ScrollView,
   Dimensions
-} from "react-native";
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 function RepBox(props) {
   const [reps, setReps] = useState(props.reps.toString());
   const [good, setGood] = useState(true);
   const [changed, setChanged] = useState(false);
-  const update = num => {
-    if (num === "") {
+  const update = (num) => {
+    if (num === '') {
       setReps(num);
     } else if (num.search(/\./) === -1) {
       setReps(num);
       setChanged(true);
-      // checkGood();
     }
   };
   const checkGood = () => {
-    if (reps === "") {
-      setReps("0");
+    if (reps === '') {
+      setReps('0');
     }
     if (parseInt(reps, 10) >= props.reps) {
       setGood(true);
@@ -33,16 +33,22 @@ function RepBox(props) {
       setGood(false);
     }
   };
+
+  const colorByGood = () => {
+    if (good) {
+      return 'green';
+    }
+    return 'red';
+  };
   return (
     <View
       style={[
         styles.RepBoxContainer,
-        { backgroundColor: changed ? (good ? "green" : "red") : "transparent" }
-      ]}
-    >
+        { backgroundColor: changed ? colorByGood() : 'transparent' }
+      ]}>
       <TextInput
         style={styles.InputText}
-        onChangeText={text => update(text)}
+        onChangeText={(text) => update(text)}
         keyboardType="numeric"
         value={reps}
         maxLength={2}
@@ -54,30 +60,26 @@ function RepBox(props) {
 }
 
 function SetBar(props) {
-  let repList = [];
-  for (var i = 0; i < props.sets; i++) {
+  const repList = [];
+  for (let i = 0; i < props.sets; i += 1) {
     repList.push(props.reps);
   }
   return (
     <View
       style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "row"
-      }}
-    >
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row'
+      }}>
       <View style={styles.SetBoxContainer}>
         <TouchableWithoutFeedback onPress={props.close}>
           <View style={styles.CloseSetBoxButton}>
-            <Text style={styles.Text}>></Text>
+            <Text style={styles.Text}>&gt;</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {repList.map((e, idx) => {
           return <RepBox key={idx} reps={e} />;
         })}
@@ -116,10 +118,9 @@ export default function ExerciseBar(props) {
                 translateX: x
               }
             ],
-            display: visible ? "inline" : "none"
+            display: visible ? 'inline' : 'none'
           }
-        ]}
-      >
+        ]}>
         <SetBar close={slideClosed} sets={props.sets} reps={props.reps} />
       </Animated.View>
       {!visible && (
@@ -143,11 +144,10 @@ export default function ExerciseBar(props) {
               if (visible) slideClosed();
               else slideOpen();
             }}
-            style={{ width: "100%", height: "100%" }}
-          >
+            style={{ width: '100%', height: '100%' }}>
             <Text style={styles.Text}>
               {props.sets}
-              {"\n"}sets
+              {'\n'}sets
             </Text>
           </TouchableWithoutFeedback>
         </View>
@@ -156,90 +156,106 @@ export default function ExerciseBar(props) {
   );
 }
 
+RepBox.propTypes = {
+  reps: PropTypes.number.isRequired
+};
+SetBar.propTypes = {
+  sets: PropTypes.number.isRequired,
+  reps: PropTypes.number.isRequired,
+  close: PropTypes.func.isRequired
+};
+ExerciseBar.propTypes = {
+  sets: PropTypes.number.isRequired,
+  reps: PropTypes.number.isRequired,
+  exercise: PropTypes.string.isRequired,
+  weight: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired
+};
+
 const styles = StyleSheet.create({
   ExerciseBarContainer: {
-    display: "flex",
-    flexDirection: "row",
-    borderColor: "#838383",
+    display: 'flex',
+    flexDirection: 'row',
+    borderColor: '#838383',
     borderWidth: 3,
-    width: "80%",
-    height: "100%"
+    width: '80%',
+    height: '100%'
   },
   ExerciseContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 6,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    borderColor: "#838383",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderColor: '#838383',
     borderRightWidth: 2,
-    width: "100%"
+    width: '100%'
   },
   WeightContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 3,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    borderColor: "#838383",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderColor: '#838383',
     borderRightWidth: 2,
-    width: "100%"
+    width: '100%'
   },
   SetContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 2,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    width: "100%"
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    width: '100%'
   },
   Text: {
-    textAlign: "center",
-    color: "#f0d4d4",
+    textAlign: 'center',
+    color: '#f0d4d4',
     fontSize: 20
   },
   InputText: {
-    textAlign: "center",
-    color: "#f0d4d4",
+    textAlign: 'center',
+    color: '#f0d4d4',
     fontSize: 20,
-    width: "100%",
-    height: "40%"
+    width: '100%',
+    height: '40%'
   },
   SlideView: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center"
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   SetBoxContainer: {
-    backgroundColor: "#181818",
-    width: "20%",
-    height: "100%"
+    backgroundColor: '#181818',
+    width: '20%',
+    height: '100%'
     // display: "flex",
     // flexDirection: "row"
   },
   CloseSetBoxButton: {
-    display: "flex",
+    display: 'flex',
     flex: 2,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    borderColor: "#838383",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderColor: '#838383',
     borderRightWidth: 2,
-    width: "100%"
+    width: '100%'
   },
   RepBoxContainer: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    borderColor: "#838383",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderColor: '#838383',
     borderRightWidth: 2,
-    maxWidth: Dimensions.get("window").width*.15,
-    minWidth: Dimensions.get("window").width*.15,
+    maxWidth: Dimensions.get('window').width * 0.15,
+    minWidth: Dimensions.get('window').width * 0.15
   }
 });

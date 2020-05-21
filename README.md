@@ -1,5 +1,5 @@
 # Fitness Tracker
-![React-Native](https://github.com/SeanPrendi/fitnessTracker/workflows/React-Native/badge.svg?branch=master)
+![Front-End Tests](https://github.com/SeanPrendi/fitnessTracker/workflows/React-Native/badge.svg?branch=master)
 
 This is a simple fitness tracking app. I expect that it will be built using a React Native front-end and a Golang back-end.
 

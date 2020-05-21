@@ -44,7 +44,7 @@ export default function MainPage(props) {
           })}
         </ScrollView>
       </KeyboardAvoidingView>
-      <View style={styles.BottomBarContainer}>
+      <View>
         <BottomBar setPage={props.setPage} currPage="main" />
       </View>
     </View>
@@ -90,8 +90,5 @@ const styles = StyleSheet.create({
     flex: 1,
     height: Dimensions.get('window').height * 0.11,
     paddingBottom: Dimensions.get('window').width * 0.05
-  },
-  BottomBarContainer: {
-    // alignSelf: "flex-end"
   }
 });

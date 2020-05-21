@@ -7,8 +7,7 @@ import StatsPage from './pages/StatsPage';
 
 export default function App() {
   const [page, setPage] = useState('main');
-  const [day, setDay] = useState('Back');
-  setDay('Back'); // ! remove this; short term linting fix
+  const [day, setDay] = useState('Back'); // eslint-disable-line no-unused-vars
 
   switch (page) {
     case 'main':

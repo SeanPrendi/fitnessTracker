@@ -1,13 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 import PropTypes from 'prop-types';
 import BottomBar from '../components/BottomBar';
+import SettingsBar from '../components/SettingsBar';
 
 export default function UserSettingsPage(props) {
+  // const userData = props.data;
   return (
     <View style={styles.container}>
       <Text style={styles.header}>User Settings</Text>
-      <ScrollView />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.scrollingExternContainer}
+        contentContainerStyle={styles.scrollingContentContainer}>
+        {/* {userData.map((datum, idx) => {
+          return (
+            <View key={idx}>
+
+            </View>
+          )
+        })} */}
+        <SettingsBar />
+      </ScrollView>
       <View style={styles.BottomBarContainer}>
         <BottomBar setPage={props.setPage} currPage="userSettings" />
       </View>
@@ -37,5 +51,11 @@ const styles = StyleSheet.create({
   },
   BottomBarContainer: {
     alignSelf: 'flex-end'
+  },
+  scrollingExternContainer: {
+    width: Dimensions.get('window').width
+  },
+  scrollingContentContainer: {
+    alignItems: 'center'
   }
 });

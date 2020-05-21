@@ -234,8 +234,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#181818',
     width: '20%',
     height: '100%'
-    // display: "flex",
-    // flexDirection: "row"
   },
   CloseSetBoxButton: {
     display: 'flex',

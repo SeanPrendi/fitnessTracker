@@ -27,7 +27,7 @@ export default function MainPage(props) {
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={styles.scrollingExternContainer}
-          contentContainerStyle={styles.scrollingContenterContainer}
+          contentContainerStyle={styles.scrollingContentContainer}
           bounces={false}>
           {exercises.map((ex, idx) => {
             return (
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   scrollingExternContainer: {
     width: Dimensions.get('window').width
   },
-  scrollingContenterContainer: {
+  scrollingContentContainer: {
     alignItems: 'center'
   },
   EBarContainer: {

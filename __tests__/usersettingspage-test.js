@@ -38,4 +38,13 @@ describe('All exercise bars present', () => {
     const wrapper = shallow(<Settings setPage={() => {}} />);
     expect(wrapper.find('#subheading').length).toBe(Object.keys(data).length);
   });
+
+  it('Should render all headings', () => {
+    let totalNumSettings = 0
+    Object.keys(data).map(val => {
+        totalNumSettings += Object.keys(data[val]).length
+    })
+    const wrapper = shallow(<Settings setPage={() => {}} />);
+    expect(wrapper.find('SettingsBar').length).toBe(totalNumSettings);
+  });
 });

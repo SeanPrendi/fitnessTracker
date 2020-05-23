@@ -5,8 +5,8 @@
 import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Main from '../pages/MainPage';
-import data from '../mockdata/exercise.json';
+import Settings from '../pages/UserSettingsPage';
+import data from '../mockdata/userSettings.json';
 
 Enzyme.configure({ adapter: new Adapter() });
 global.shallow = Enzyme.shallow;
@@ -34,8 +34,17 @@ describe('All exercise bars present', () => {
     console.error = origError;
   });
 
-  it('Should render all exercises', () => {
-    const wrapper = shallow(<Main day="Back" setPage={() => {}} />);
-    expect(wrapper.find('ExerciseBar').length).toBe(data.Back.length);
+  it('Should render all headings', () => {
+    const wrapper = shallow(<Settings setPage={() => {}} />);
+    expect(wrapper.find('#subheading').length).toBe(Object.keys(data).length);
+  });
+
+  it('Should render all headings', () => {
+    let totalNumSettings = 0
+    Object.keys(data).map(val => {
+        totalNumSettings += Object.keys(data[val]).length
+    })
+    const wrapper = shallow(<Settings setPage={() => {}} />);
+    expect(wrapper.find('SettingsBar').length).toBe(totalNumSettings);
   });
 });

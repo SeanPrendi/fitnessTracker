@@ -1,0 +1,48 @@
+{
+    "Personal Fitness": {
+        "Height": {
+            "value": "73",
+            "unit": "in"
+        },
+        "Weight": {
+            "value": "175",
+            "unit": "lbs"
+        }
+    },
+    "Compound Exercises": {
+        "Deadlift": {
+            "value": "325",
+            "unit": "lbs"
+        },
+        "Squat": {
+            "value": "235",
+            "unit": "lbs"
+        },
+        "Bench": {
+            "value": "135",
+            "unit": "lbs"
+        },
+        "Overhead Press": {
+            "value": "115",
+            "unit": "lbs"
+        }
+    },
+    "Back Auxillary": {
+        "Pull Ups": {
+            "value": "0",
+            "unit": "lbs"
+        },
+        "Bent Over Rows": {
+            "value": "135",
+            "unit": "lbs"
+        },
+        "Lat Pull Downs": {
+            "value": "85",
+            "unit": "lbs"
+        },
+        "Seated Cable Row": {
+            "value": "95",
+            "unit": "lbs"
+        }
+    }
+}

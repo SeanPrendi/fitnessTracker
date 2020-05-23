@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   Dimensions,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Platform
 } from "react-native";
 import PropTypes from "prop-types";
 import BottomBar from "../components/BottomBar";
@@ -13,6 +14,7 @@ import SettingsBar from "../components/SettingsBar";
 import settings from "../mockdata/userSettings.json";
 
 export default function UserSettingsPage(props) {
+  const numCategories = Object.keys(settings).length
   return (
     <View style={styles.container}>
       <Text style={styles.header}>User Settings</Text>
@@ -27,25 +29,14 @@ export default function UserSettingsPage(props) {
           contentContainerStyle={styles.scrollingContentContainer}
         >
           {Object.keys(settings).map((val, idx) => {
-            console.log(val);
             return (
-              <View key={idx} style={{ display: "flex", alignItems: "center" }}>
-                <Text
-                  style={{
-                    color: "#f0d4d4",
-                    fontSize: 30,
-                    paddingTop: 10,
-                    paddingBottom: 5,
-                    textDecorationLine: "underline"
-                  }}
-                >
-                  {val}
-                </Text>
+              <View key={idx} style={styles.SettingsSection}>
+                <Text key={idx + numCategories} style={styles.SettingsHeader} id="subheading">{val}</Text>
                 {Object.keys(settings[val]).map((setting, jdx) => {
                   return (
-                    <View style={styles.SBarContainer}>
+                    <View key={jdx + numCategories*2} style={styles.SBarContainer}>
                       <SettingsBar
-                        key={jdx}
+                        key={jdx + numCategories*3}
                         setting={setting}
                         value={settings[val][setting].value}
                         unit={settings[val][setting].unit}
@@ -95,11 +86,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   SBarContainer: {
-    // flex: 1,
     display: "flex",
     alignItems: "center",
     height: Dimensions.get("window").height * 0.09,
     width: Dimensions.get("window").width,
     paddingBottom: Dimensions.get("window").width * 0.05
+  },
+  SettingsSection: { display: "flex", alignItems: "center" },
+  SettingsHeader: {
+    color: "#f0d4d4",
+    fontSize: 30,
+    paddingTop: 10,
+    paddingBottom: 5,
+    textDecorationLine: "underline"
   }
 });

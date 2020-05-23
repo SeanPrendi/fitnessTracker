@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default function SettingsBar(props) {
   const [data, setData] = useState(props.value);
@@ -16,7 +16,7 @@ export default function SettingsBar(props) {
             keyboardType="numeric"
             onChangeText={setData}
             maxLength={4}
-            onEndEditing={() => (data === "" ? setData("0") : data)}
+            onEndEditing={() => (data === '' ? setData('0') : data)}
           />
           <Text style={styles.ValueUnitText}> {props.unit}</Text>
         </View>
@@ -33,27 +33,27 @@ SettingsBar.propTypes = {
 
 const styles = StyleSheet.create({
   SettingsBarContainer: {
-    display: "flex",
-    flexDirection: "row",
-    borderColor: "#838383",
+    display: 'flex',
+    flexDirection: 'row',
+    borderColor: '#838383',
     borderWidth: 3,
-    width: "80%",
-    height: "100%"
+    width: '80%',
+    height: '100%'
   },
   SettingsContent: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
-  SettingText: { color: "#f0d4d4", paddingLeft: "5%", fontSize: 25 },
+  SettingText: { color: '#f0d4d4', paddingLeft: '5%', fontSize: 25 },
   ValueUnitContainer: {
-    paddingRight: "5%",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
+    paddingRight: '5%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  ValueUnitText: { color: "#f0d4d4", fontSize: 25 }
+  ValueUnitText: { color: '#f0d4d4', fontSize: 25 }
 });
